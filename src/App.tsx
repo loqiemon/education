@@ -5,6 +5,7 @@ import "./styles/index.scss";
 import Counter from "./components/counter";
 import {AboutPageAsync} from "./pages/AboutPage/AboutPageAsync";
 import {useTheme} from "./theme/useTheme";
+import {classNames} from "./helpers/classNames/classNames";
 
 interface OwnProps {}
 
@@ -14,7 +15,7 @@ const App: FunctionComponent<Props> = props => {
   const {theme, toggleTheme} = useTheme();
 
   return (
-    <div className={`app ${theme}`}>
+    <div className={classNames("app", {}, [theme])}>
       <button onClick={toggleTheme}>Toggle theme</button>
       <Link to="/about">About</Link>
       <Suspense fallback={<h2>Loading...</h2>}>
